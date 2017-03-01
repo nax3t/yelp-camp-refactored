@@ -14,6 +14,7 @@
     "ejs": "^2.3.4",
     "express": "^4.13.3",
     "express-session": "^1.11.3",
+    "geocoder": "^0.2.2",
     "method-override": "^2.3.5",
     "moment": "^2.17.1",
     "mongoose": "^4.1.12",

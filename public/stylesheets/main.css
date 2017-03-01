@@ -10,3 +10,8 @@
     padding: 9px;
 }
 
+/* Google Map */
+#map {
+	height: 400px;
+	width: 100%;
+}
