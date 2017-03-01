@@ -1,6 +1,7 @@
 var express = require("express");
 var router  = express.Router();
 var Campground = require("../models/campground");
+var Comment = require("../models/comment");
 var middleware = require("../middleware");
 var request = require("request");
 var geocoder = require('geocoder');
@@ -94,6 +95,19 @@ router.put("/:id", function(req, res){
             res.redirect("/campgrounds/" + campground._id);
         }
     });
+});
+
+router.delete("/:id", function(req, res) {
+  Campground.findByIdAndRemove(req.params.id, function(err, campground) {
+    Comment.remove({
+      _id: {
+        $in: campground.comments
+      }
+    }, function(err, comments) {
+      req.flash('error', campground.name + ' deleted!');
+      res.redirect('/campgrounds');
+    })
+  });
 });
 
 module.exports = router;

@@ -17,10 +17,13 @@
         <h4><a><%=campground.name%></a></h4>
         <p><%= campground.description %></p>
         <p>
-          <em>Submitted By <%= campground.author.username %> <%= moment(campground.createdAt).fromNow() %></em>
+          <em>Submitted by: <%= campground.author.username %> <%= moment(campground.createdAt).fromNow() %></em>
         </p>
         <% if(currentUser && campground.author.id.equals(currentUser._id)){ %>
-        <a class="btn btn-warning" href="/campgrounds/<%= campground._id %>/edit">Edit Campground</a>
+        <a class="btn btn-warning" href="/campgrounds/<%= campground._id %>/edit">Edit</a>
+        <form action="/campgrounds/<%= campground._id %>?_method=DELETE" method="POST" class="delete-form">
+          <button class="btn btn-danger">Delete</button>
+        </form>
         <% } %>
       </div>
     </div>
@@ -38,11 +41,14 @@
            <%= comment.text %> 
 
            <% if(currentUser && comment.author.id.equals(currentUser._id)){ %>
-           <form style="display: inline" class="pull-right" action="/campgrounds/<%=campground._id%>/comments/<%=comment._id%>?_method=DELETE" method="POST">
-            <button class="btn btn-xs btn-danger">DELETE</button>
-            <a href="/campgrounds/<%=campground._id%>/comments/<%=comment._id%>/edit" class="btn btn-xs btn-info">EDIT</a>
-          </form>
-          <% } %> 
+            <div class="pull-right">
+              <a href="/campgrounds/<%=campground._id%>/comments/<%=comment._id%>/edit" class="btn btn-xs btn-warning">EDIT</a>
+              <form class="delete-form" action="/campgrounds/<%=campground._id%>/comments/<%=comment._id%>?_method=DELETE" method="POST">
+                <button class="btn btn-xs btn-danger">DELETE</button>
+              </form>
+            </div>
+          <% } %>
+          <hr>
         </div>
       </div>
     </div>

@@ -1,19 +1,24 @@
-<% include partials/header %>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-	<link rel="stylesheet" href="stylesheets/landing.css">
-<div class="container">
- 	<div class="row">
- 		<div class="col-lg-12">
- 			<div class="content">
- 				<h1>YelpCamp</h1>
- 				<h3>Start planning your next trip today</h3>
- 				<hr>
- 				<a href="/campgrounds" class="btn btn-default btn-lg"><i class="fa fa-tree"></i> Get Started!</a>
- 			</div>
- 		</div>
- 	</div>
- </div>
- 
- <script src="scripts/background.js"></script>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>YelpCamp</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/stylesheets/landing.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" type="text/javascript" async></script>
+</head>
+<body>
 
-<% include partials/footer %>
+	<div id="landing-header">
+		<h1>Welcome to YelpCamp!</h1>
+		<a href="/campgrounds" class="btn btn-lg btn-default">Get Started</a>
+	</div>
+
+	<ul class="slideshow">
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+
+	<% include partials/footer %>
