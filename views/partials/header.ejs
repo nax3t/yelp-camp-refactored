@@ -16,15 +16,19 @@
                 <a class="navbar-brand" href="/">YelpCamp</a>
             </div>
             <div class="collapse navbar-collapse">
-                <ul class="nav navbar-nav navbar-right">
-                    <% if(!currentUser){ %>
-                        <li><a href="/login">Login</a></li>
-                        <li><a href="/register">Sign Up</a></li>
-                    <% } else { %>
-                        <li><a href="#">Signed In As <%= currentUser.username %></a></li>
-                        <li><a href="/logout">Logout</a></li>
-                    <% } %>
-                </ul>
+              <ul class="nav navbar-nav">
+              <!--  class="<%= page === 'campgrounds' ? 'active' : %>" -->
+                <li><a href="/campgrounds">Home</a></li>
+              </ul>
+              <ul class="nav navbar-nav navbar-right">
+                  <% if(!currentUser){ %>
+                      <li><a href="/login">Login</a></li>
+                      <li><a href="/register">Sign Up</a></li>
+                  <% } else { %>
+                      <li><a href="#">Signed In As <%= currentUser.username %></a></li>
+                      <li><a href="/logout">Logout</a></li>
+                  <% } %>
+              </ul>
             </div>
         </div>
     </nav>
