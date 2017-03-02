@@ -4,6 +4,7 @@
   "description": "YelpCamp v1",
   "main": "app.js",
   "scripts": {
+    "start": "node app",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Colt Steele",
@@ -11,6 +12,8 @@
   "dependencies": {
     "body-parser": "^1.14.1",
     "connect-flash": "^0.1.1",
+    "cookie-parser": "^1.4.3",
+    "dotenv": "^4.0.0",
     "ejs": "^2.3.4",
     "express": "^4.13.3",
     "express-session": "^1.11.3",
