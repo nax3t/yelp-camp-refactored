@@ -44,3 +44,9 @@ body {
 .delete-form {
 	display: inline-block;
 }
+
+/* Flexbox grid fix */
+.flex-wrap {
+  display:flex;
+  flex-wrap: wrap;
+}
