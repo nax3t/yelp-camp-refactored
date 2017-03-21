@@ -41,7 +41,6 @@
           <span class="pull-right"><%= moment(comment.createdAt).fromNow() %></span>
           <div>
            <%= comment.text %> 
-
            <% if(currentUser && comment.author.id.equals(currentUser._id)){ %>
             <div class="pull-right">
               <a href="/campgrounds/<%=campground._id%>/comments/<%=comment._id%>/edit" class="btn btn-xs btn-warning">EDIT</a>
@@ -58,7 +57,9 @@
   </div>
 </div>
 </div>
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBkG51lwJtDvYFKTBdRZlhzYg1D4QFsXPU&callback=initMap"></script>
+<script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyArh3fu23-61oj3iYKnJmKEDoiFdxBxzlM&callback=initMap">
+    </script>
 <script>
   function initMap() {
     var lat = <%= campground.lat %>;
@@ -85,7 +86,6 @@
       infowindow.open(map, marker);
     });
   }
-
   window.onload = initMap;
 </script>
 <% include ../partials/footer %>

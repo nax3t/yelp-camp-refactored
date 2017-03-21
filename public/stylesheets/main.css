@@ -36,17 +36,24 @@ body {
 
 /* Google Map styles */
 #map {
-	height: 400px;
-	width: 100%;
+  height: 350px;
+  width: 100%;
+  margin-bottom: 1em;
 }
 
 /* Campground show page delete button */
 .delete-form {
-	display: inline-block;
+  display: inline-block;
 }
 
 /* Flexbox grid fix */
 .flex-wrap {
   display:flex;
   flex-wrap: wrap;
+}
+
+@media screen and (min-width: 992px) {
+  #map {
+   height: 250px;
+  }
 }
