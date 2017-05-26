@@ -11,7 +11,7 @@ module.exports = {
     checkUserCampground: function(req, res, next){
         if(req.isAuthenticated()){
             Campground.findById(req.params.id, function(err, campground){
-               if(campground.author.id.equals(req.user._id)){
+               if(campground.author.id.equals(req.user._id) || req.user.isAdmin){
                    next();
                } else {
                    req.flash("error", "You don't have permission to do that!");
@@ -28,7 +28,7 @@ module.exports = {
         console.log("YOU MADE IT!");
         if(req.isAuthenticated()){
             Comment.findById(req.params.commentId, function(err, comment){
-               if(comment.author.id.equals(req.user._id)){
+               if(comment.author.id.equals(req.user._id) || req.user.isAdmin){
                    next();
                } else {
                    req.flash("error", "You don't have permission to do that!");
