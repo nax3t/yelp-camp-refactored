@@ -12,6 +12,7 @@ var express     = require("express"),
     session = require("express-session"),
     seedDB      = require("./seeds"),
     methodOverride = require("method-override");
+    
 // configure dotenv
 require('dotenv').load();
 
@@ -50,7 +51,6 @@ app.use(function(req, res, next){
    res.locals.error = req.flash('error');
    next();
 });
-
 
 app.use("/", indexRoutes);
 app.use("/campgrounds", campgroundRoutes);
