@@ -39,7 +39,7 @@ router.get("/", function(req, res){
 });
 
 //CREATE - add new campground to DB
-router.post("/", middleware.isLoggedIn, middleware.isAdmin, function(req, res){
+router.post("/", middleware.isLoggedIn, middleware.isSafe, function(req, res){
   // get data from form and add to campgrounds array
   var name = req.body.name;
   var image = req.body.image;
@@ -68,7 +68,7 @@ router.post("/", middleware.isLoggedIn, middleware.isAdmin, function(req, res){
 });
 
 //NEW - show form to create new campground
-router.get("/new", middleware.isLoggedIn, middleware.isAdmin, function(req, res){
+router.get("/new", middleware.isLoggedIn, function(req, res){
    res.render("campgrounds/new"); 
 });
 
@@ -86,7 +86,7 @@ router.get("/:id", function(req, res){
     });
 });
 
-router.get("/:id/edit", middleware.checkUserCampground, middleware.isAdmin, function(req, res){
+router.get("/:id/edit", middleware.checkUserCampground, function(req, res){
     //find the campground with provided ID
     Campground.findById(req.params.id, function(err, foundCampground){
         if(err){
@@ -98,7 +98,7 @@ router.get("/:id/edit", middleware.checkUserCampground, middleware.isAdmin, func
     });
 });
 
-router.put("/:id", middleware.isAdmin, function(req, res){
+router.put("/:id", middleware.isSafe, function(req, res){
   geocoder.geocode(req.body.location, function (err, data) {
     var lat = data.results[0].geometry.location.lat;
     var lng = data.results[0].geometry.location.lng;
@@ -116,7 +116,7 @@ router.put("/:id", middleware.isAdmin, function(req, res){
   });
 });
 
-router.delete("/:id", middleware.isAdmin, function(req, res) {
+router.delete("/:id", function(req, res) {
   Campground.findByIdAndRemove(req.params.id, function(err, campground) {
     Comment.remove({
       _id: {
