@@ -88,6 +88,7 @@ router.get("/:id", function(req, res){
     });
 });
 
+// EDIT - shows edit form for a campground
 router.get("/:id/edit", checkUserCampground, function(req, res){
     //find the campground with provided ID
     Campground.findById(req.params.id, function(err, foundCampground){
@@ -96,11 +97,12 @@ router.get("/:id/edit", checkUserCampground, function(req, res){
           req.flash('error', 'Sorry, that campground does not exist!');
           return res.redirect('/campgrounds');
       }
-      //render show template with that campground
+      //render edit template with that campground
       res.render("campgrounds/edit", {campground: foundCampground});
     });
 });
 
+// PUT - updates campground in the database
 router.put("/:id", isSafe, function(req, res){
   geocoder.geocode(req.body.location, function (err, data) {
     var lat = data.results[0].geometry.location.lat;
@@ -119,6 +121,7 @@ router.put("/:id", isSafe, function(req, res){
   });
 });
 
+// DELETE - removes campground and its comments from the database
 router.delete("/:id", function(req, res) {
   Campground.findByIdAndRemove(req.params.id, function(err, campground) {
     Comment.remove({
