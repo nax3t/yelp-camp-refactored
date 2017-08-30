@@ -9,7 +9,7 @@
                 </div>
                 <div class="form-group">
                     <label for="image">Image Url</label>
-                    <input class="form-control" type="text" name="image" id="image" placeholder="https://images.unsplash.com/..." value="<%= campground.image %>">
+                    <input class="form-control" type="text" name="image" id="image" pattern="^https:\/\/images\.unsplash\.com\/.*" title="Only images from images.unsplash.com allowed. See link below for instructions." placeholder="https://images.unsplash.com/..." value="<%= campground.image %>" required>
                     <small>Click <a href="https://youtu.be/Bn3weNRQRDE">here</a> for tutorial on how to copy unsplash urls.</small>
                 </div>
                 <div class="form-group">

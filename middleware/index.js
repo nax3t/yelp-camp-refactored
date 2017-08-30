@@ -25,7 +25,6 @@ module.exports = {
       }
   },
   checkUserComment: function(req, res, next){
-      console.log("YOU MADE IT!");
       if(req.isAuthenticated()){
           Comment.findById(req.params.commentId, function(err, comment){
              if(comment.author.id.equals(req.user._id) || req.user.isAdmin){

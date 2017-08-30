@@ -4,6 +4,7 @@ var Campground = require("../models/campground");
 var Comment = require("../models/comment");
 var middleware = require("../middleware");
 var geocoder = require('geocoder');
+var { isLoggedIn, checkUserCampground, checkUserComment, isAdmin, isSafe } = middleware; // destructuring assignment
 
 // Define escapeRegex function for search feature
 function escapeRegex(text) {
@@ -39,7 +40,7 @@ router.get("/", function(req, res){
 });
 
 //CREATE - add new campground to DB
-router.post("/", middleware.isLoggedIn, middleware.isSafe, function(req, res){
+router.post("/", isLoggedIn, isSafe, function(req, res){
   // get data from form and add to campgrounds array
   var name = req.body.name;
   var image = req.body.image;
@@ -68,7 +69,7 @@ router.post("/", middleware.isLoggedIn, middleware.isSafe, function(req, res){
 });
 
 //NEW - show form to create new campground
-router.get("/new", middleware.isLoggedIn, function(req, res){
+router.get("/new", isLoggedIn, function(req, res){
    res.render("campgrounds/new"); 
 });
 
@@ -87,7 +88,7 @@ router.get("/:id", function(req, res){
     });
 });
 
-router.get("/:id/edit", middleware.checkUserCampground, function(req, res){
+router.get("/:id/edit", checkUserCampground, function(req, res){
     //find the campground with provided ID
     Campground.findById(req.params.id, function(err, foundCampground){
       if(err || foundCampground == undefined){
@@ -100,7 +101,7 @@ router.get("/:id/edit", middleware.checkUserCampground, function(req, res){
     });
 });
 
-router.put("/:id", middleware.isSafe, function(req, res){
+router.put("/:id", isSafe, function(req, res){
   geocoder.geocode(req.body.location, function (err, data) {
     var lat = data.results[0].geometry.location.lat;
     var lng = data.results[0].geometry.location.lng;
