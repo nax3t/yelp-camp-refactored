@@ -51,6 +51,10 @@ router.post("/", isLoggedIn, isSafe, function(req, res){
   }
   var cost = req.body.cost;
   geocoder.geocode(req.body.location, function (err, data) {
+    if (err || data.status === 'ZERO_RESULTS') {
+      req.flash('error', 'Invalid address');
+      return res.redirect('back');
+    }
     var lat = data.results[0].geometry.location.lat;
     var lng = data.results[0].geometry.location.lng;
     var location = data.results[0].formatted_address;
