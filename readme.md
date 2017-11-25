@@ -1,5 +1,7 @@
 # Collapsible Comment Section Upgrade
 
+![Comment Section Screenshot](https://i.imgur.com/4QTcFMW.jpg)
+
 This tutorial uses technologies that we've learned in the course to make an upgraded comment section with collapsible new comment and edit comment forms on the campground's show page.
 
 To make the tutorial as straightforward as possible, all the changes are made only to the show.ejs file.
