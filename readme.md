@@ -135,9 +135,9 @@ To make the tutorial as straightforward as possible, all the changes are made on
 - Also, we add the edit comment form (familiar from `views/campgrounds/edit.ejs` which is collapsible when the comment owner presses the edit comment button
 
 - The tricky part worth mentioning here was the bug that happened when there were multiple comments that the current user owns:
-The problem was that the connection of the collapsible content and the button is made by an id.
-A collapse bug would happen because there would be multiple elements with the same id that triggers it, and the collapse button wouldn't work.
-It's also against the rules to use id more than once in a page as we know, so I used the power of EJS and this nifty trick to make each `id` attribute unique for the edit comment collapsible forms:
+- The problem was that the connection of the collapsible content and the button is made by an id.
+- A collapse bug would happen because there would be multiple elements with the same id that triggers it, and the collapse button wouldn't work.
+- It's also against the rules to use id more than once in a page as we know, so I used the power of EJS and this nifty trick to make each `id` attribute unique for the edit comment collapsible forms (more precisely, the parent div element holding the form):
 
 `<div class="collapse" id="collapseEdit<%= comment._id %>">`
 
