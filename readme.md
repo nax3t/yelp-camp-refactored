@@ -17,8 +17,8 @@ To make the tutorial as straightforward as possible, all the changes are made on
   </div>
 ```
 
-- For starters, we will place all our content inside of a div element with the Bootstrap class of 'well'
-- After that, we are adding the 'Add new comment button' code, which will have the ability to collapse the new comment form
+- For starters, we will place all our content inside of a div element with the Bootstrap class of 'well'.
+- After that, we are adding the 'Add new comment button' code, which will have the ability to collapse the new comment form.
 
 ```
   <!--Comment section title-->
@@ -51,9 +51,9 @@ To make the tutorial as straightforward as possible, all the changes are made on
   <!--Collapse Add a comment form END-->
 ```
 
-- The comment section title is added via an h4 element
-- After, the new comment form is added which is a familiar piece of code from our `views/campgrounds/new.ejs`
-- We also make a check if the user is logged in before showing the form
+- The comment section title is added via an h4 element.
+- After, the new comment form is added which is a familiar piece of code from our `views/campgrounds/new.ejs`.
+- We also make a check if the user is logged in before showing the form.
 
 ```
   <hr>
@@ -89,11 +89,11 @@ To make the tutorial as straightforward as possible, all the changes are made on
         <% if (currentUser && currentUser._id.equals(comment.author.id)) { %>
 ```
 
-- In the above part of the code, we are dealing with showing the existing comments
-- First, we check if the campground has any comments - if it doesn't, we make our page say: `No comments yet`
-- After, we write a forEach loop similar to the one that we've had before, to print all the comments
-- We also add some small details, like changing the user icon color if the current user owns a particular comment
-- If you haven't still implemented Moment.js in your code, please see [Ian's tutorial on how to implement it.](http://slides.com/nax3t/yelpcamp-refactor-moment#/)
+- In the above part of the code, we are dealing with showing the existing comments.
+- First, we check if the campground has any comments - if it doesn't, we make our page say: `No comments yet`.
+- After, we write a forEach loop similar to the one that we've had before, to print all the comments.
+- We also add some small details, like changing the user icon color if the current user owns a particular comment.
+- If you haven't still implemented Moment.js in your code, please see [Ian's tutorial on how to implement it.](http://slides.com/nax3t/yelpcamp-refactor-moment#/).
 
 ```
 <!--Edit button used for collapsing the edit comment form-->
@@ -131,8 +131,8 @@ To make the tutorial as straightforward as possible, all the changes are made on
 <!--COMMENT SECTION END-->
 ```
 
-- We end the comment section refactor by adding the edit comment and delete comment buttons
-- Also, we add the edit comment form (familiar from `views/campgrounds/edit.ejs` which is collapsible when the comment owner presses the edit comment button
+- We end the comment section refactor by adding the edit comment and delete comment buttons.
+- Also, we add the edit comment form (familiar from `views/campgrounds/edit.ejs` which is collapsible when the comment owner presses the edit comment button.
 
 - The tricky part worth mentioning here was the bug that happened when there were multiple comments that the current user owns:
 - The problem was that the connection of the collapsible content and the button is made by an id.
@@ -141,7 +141,7 @@ To make the tutorial as straightforward as possible, all the changes are made on
 
 `<div class="collapse" id="collapseEdit<%= comment._id %>">`
 
-- Now we are generating an id attribute based on the comment._id field from MongoDB, which will ensure it's uniqueness
+- Now we are generating an id attribute based on the comment._id field from MongoDB, which will ensure it's uniqueness.
 
 # And that would be it!
 Now we have a new comment section with some smooth collapsible create/edit forms. I tried to keep all the code inside this one file, but feel free to refactor the code further and put the CSS styles in it's own file, for example.
