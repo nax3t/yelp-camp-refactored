@@ -1,6 +1,6 @@
 # Collapsible Comment Section Upgrade
 
-![Comment Section Screenshot](https://i.imgur.com/4QTcFMW.jpg)
+![Comment Section Screenshot](https://i.imgur.com/qZZJxNX.png)
 
 This tutorial uses technologies that we've learned in the course to make an upgraded comment section with collapsible new comment and edit comment forms on the campground's show page.
 
