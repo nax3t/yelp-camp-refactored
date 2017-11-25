@@ -141,7 +141,7 @@ To make the tutorial as straightforward as possible, all the changes are made on
 
 `<div class="collapse" id="collapseEdit<%= comment._id %>">`
 
-- Now we are generating an id attribute based on the comment unique _id field from MongoDB, which will ensure it's uniqueness
+- Now we are generating an id attribute based on the comment._id field from MongoDB, which will ensure it's uniqueness
 
 # And that would be it!
 Now we have a new comment section with some smooth collapsible create/edit forms. I tried to keep all the code inside this one file, but feel free to refactor the code further and put the CSS styles in it's own file, for example.
