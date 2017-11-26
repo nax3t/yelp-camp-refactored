@@ -95,7 +95,7 @@ To make the tutorial as straightforward as possible, all the changes are made on
 - First, we check if the campground has any comments - if it doesn't, we make our page say: `No comments yet`.
 - After, we write a forEach loop similar to the one that we've had before, to print all the comments.
 - We also add some small details, like changing the user icon color if the current user owns a particular comment.
-- If you haven't still implemented Moment.js in your code, please see [Ian's tutorial on how to implement it.](http://slides.com/nax3t/yelpcamp-refactor-moment#/).
+- If you haven't still implemented Moment.js in your code, please see [Ian's tutorial on how to implement it.](http://slides.com/nax3t/yelpcamp-refactor-moment#/)
 
 ```
 <!--Edit button used for collapsing the edit comment form-->
