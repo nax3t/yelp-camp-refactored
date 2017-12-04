@@ -4,7 +4,7 @@
 
 This tutorial uses technologies that we've learned in the course to make an upgraded comment section with collapsible new comment and edit comment forms on the campground's show page.
 
-To make the tutorial as straightforward as possible, all the changes are made only to the show.ejs file. But, do make sure that jQuery and Bootstrap JS script elements are included in your [views/partials/footer.ejs](https://github.com/fewsion/yelp-camp-refactored/blob/master/views/partials/footer.ejs). 
+To make the tutorial as straightforward as possible, all the changes are made only to the show.ejs file. But, do make sure that jQuery and Bootstrap JS script elements are included in your [views/partials/footer.ejs](https://github.com/fewsion/yelp-camp-refactored/blob/comment-section/views/partials/footer.ejs). 
 
 ### Markup
 - Open the `views/campgrounds/show.ejs` page file and edit the comment section code to look like the following:
