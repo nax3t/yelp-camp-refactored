@@ -7,7 +7,7 @@ $('#campground-search').on('input', function() {
     $('#campground-grid').html('');
     data.forEach(function(campground) {
       $('#campground-grid').append(`
-        <div class="col-md-3 col-sm-6">
+        <div class="col-md-4 col-sm-6">
           <div class="thumbnail">
             <img src="${ campground.image }">
             <div class="caption">
