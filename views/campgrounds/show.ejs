@@ -1,26 +1,21 @@
 <% include ../partials/header %>
 <div class="row">
   <div class="col-md-3">
-    <p class="lead">YelpCamp</p>
-    <div class="list-group">
-      <li class="list-group-item active">Info 1</li>
-      <li class="list-group-item">Info 2</li>
-      <li class="list-group-item">Info 3</li>
-    </div>
     <div id="map"></div>
   </div>
   <div class="col-md-9">
-    <div class="thumbnail">
-      <img class="img-responsive" src="<%= campground.image %>">
-      <div class="caption-full">
-        <h4 class="pull-right">
+    <div class="card mb-3">
+      <img class="card-img-top" src="<%= campground.image %>" alt="<%= campground.name %>">
+      <div class="card-body">
+        <p class="float-right">
           $<%= campground.cost %>/night
-        </h4>
-        <h4><a><%=campground.name%></a></h4>
-        <p><%= campground.description %></p>
+        </p>
+        <h5 class="card-title"><%= campground.name %></h5>
         <p>
           <em>Submitted by: <%= campground.author.username %>, <%= moment(campground.createdAt).fromNow() %></em>
         </p>
+        <hr>
+        <p class="card-text"><%= campground.description %></p>
         <% if(currentUser && campground.author.id.equals(currentUser._id) || currentUser && currentUser.isAdmin){ %>
         <a class="btn btn-warning" href="/campgrounds/<%= campground._id %>/edit">Edit</a>
         <form action="/campgrounds/<%= campground._id %>?_method=DELETE" method="POST" class="delete-form">
@@ -29,32 +24,40 @@
         <% } %>
       </div>
     </div>
-    <div class="well">
-      <div class="text-right">
-        <a class="btn btn-success" href="/campgrounds/<%= campground._id %>/comments/new">Add New Comment</a>
-      </div>
-      <hr>
-      <% campground.comments.forEach(function(comment){ %>
-      <div class="row">
-        <div class="col-md-12">
-          <strong><%= comment.author.username %></strong>
-          <span class="pull-right"><%= moment(comment.createdAt).fromNow() %></span>
-          <div>
-           <%= comment.text %> 
-
-           <% if(currentUser && comment.author.id.equals(currentUser._id) || currentUser && currentUser.isAdmin){ %>
-            <div class="pull-right">
-              <a href="/campgrounds/<%=campground._id%>/comments/<%=comment._id%>/edit" class="btn btn-xs btn-warning">EDIT</a>
-              <form class="delete-form" action="/campgrounds/<%=campground._id%>/comments/<%=comment._id%>?_method=DELETE" method="POST">
-                <button class="btn btn-xs btn-danger">DELETE</button>
-              </form>
+    <div class="card">
+      <div class="card-body">
+        <div class="text-right">
+          <a class="btn btn-success" href="/campgrounds/<%= campground._id %>/comments/new">Add New Comment</a>
+        </div>
+        <hr>
+        <div class="row">
+        <% campground.comments.forEach(function(comment){ %>
+          <div class="col-md-12 mb-2">
+            <div class="card">
+              <div class="card-body">
+                <div class="float-left">
+                  <p class="card-title"><%= comment.author.username %></p>
+                  <p class="card-text"><%= comment.text %></p>
+                </div>
+                <div class="float-right">
+                  <p><%= moment(comment.createdAt).fromNow() %></p>
+                  
+                  <% if(currentUser && comment.author.id.equals(currentUser._id) || currentUser && currentUser.isAdmin){ %>
+                  <div class="float-right">
+                    <a href="/campgrounds/<%=campground._id%>/comments/<%=comment._id%>/edit" class="btn btn-sm btn-warning">EDIT</a>
+                    <form class="delete-form" action="/campgrounds/<%=campground._id%>/comments/<%=comment._id%>?_method=DELETE" method="POST">
+                      <button class="btn btn-sm btn-danger">DELETE</button>
+                    </form>
+                  </div>
+                  <% } %>
+                </div>
+              </div>
             </div>
-          <% } %>
-          <hr>
+          </div>
+        <% }) %>
         </div>
       </div>
     </div>
-    <% }) %>
   </div>
 </div>
 </div>
