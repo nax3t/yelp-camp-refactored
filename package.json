@@ -17,7 +17,7 @@
     "connect-flash": "^0.1.1",
     "cookie-parser": "^1.4.3",
     "dotenv": "^4.0.0",
-    "ejs": "^2.3.4",
+    "ejs": "^2.5.7",
     "express": "^4.13.3",
     "express-session": "^1.11.3",
     "geocoder": "^0.2.3",
