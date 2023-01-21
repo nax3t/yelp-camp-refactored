@@ -1,10 +1,10 @@
-var express = require("express");
-var router  = express.Router();
-var Campground = require("../models/campground");
-var Comment = require("../models/comment");
-var middleware = require("../middleware");
-var geocoder = require('geocoder');
-var { isLoggedIn, checkUserCampground, checkUserComment, isAdmin, isSafe } = middleware; // destructuring assignment
+const express = require("express");
+const router  = express.Router();
+const Campground = require("../models/campground");
+const Comment = require("../models/comment");
+const middleware = require("../middleware");
+const geocoder = require('geocoder');
+let { isLoggedIn, checkUserCampground, checkUserComment, isAdmin, isSafe } = middleware; // destructuring assignment
 
 // Define escapeRegex function for search feature
 function escapeRegex(text) {
@@ -42,23 +42,23 @@ router.get("/", function(req, res){
 //CREATE - add new campground to DB
 router.post("/", isLoggedIn, isSafe, function(req, res){
   // get data from form and add to campgrounds array
-  var name = req.body.name;
-  var image = req.body.image;
-  var desc = req.body.description;
-  var author = {
+  let name = req.body.name;
+  let image = req.body.image;
+  let desc = req.body.description;
+  let author = {
       id: req.user._id,
       username: req.user.username
   }
-  var cost = req.body.cost;
+  let cost = req.body.cost;
   geocoder.geocode(req.body.location, function (err, data) {
     if (err || data.status === 'ZERO_RESULTS') {
       req.flash('error', 'Invalid address');
       return res.redirect('back');
     }
-    var lat = data.results[0].geometry.location.lat;
-    var lng = data.results[0].geometry.location.lng;
-    var location = data.results[0].formatted_address;
-    var newCampground = {name: name, image: image, description: desc, cost: cost, author:author, location: location, lat: lat, lng: lng};
+    let lat = data.results[0].geometry.location.lat;
+    let lng = data.results[0].geometry.location.lng;
+    let location = data.results[0].formatted_address;
+    let newCampground = {name: name, image: image, description: desc, cost: cost, author:author, location: location, lat: lat, lng: lng};
     // Create a new campground and save to DB
     Campground.create(newCampground, function(err, newlyCreated){
         if(err){
@@ -101,17 +101,17 @@ router.get("/:id/edit", isLoggedIn, checkUserCampground, function(req, res){
 // PUT - updates campground in the database
 router.put("/:id", isSafe, function(req, res){
   geocoder.geocode(req.body.location, function (err, data) {
-    var lat = data.results[0].geometry.location.lat;
-    var lng = data.results[0].geometry.location.lng;
-    var location = data.results[0].formatted_address;
-    var newData = {name: req.body.name, image: req.body.image, description: req.body.description, cost: req.body.cost, location: location, lat: lat, lng: lng};
+    let lat = data.results[0].geometry.location.lat;
+    let lng = data.results[0].geometry.location.lng;
+    let location = data.results[0].formatted_address;
+    let newData = {name: req.body.name, image: req.body.image, description: req.body.description, cost: req.body.cost, location: location, lat: lat, lng: lng};
     Campground.findByIdAndUpdate(req.params.id, {$set: newData}, function(err, campground){
         if(err){
             req.flash("error", err.message);
             res.redirect("back");
         } else {
             req.flash("success","Successfully Updated!");
-            res.redirect("/campgrounds/" + campground._id);
+            res.redirect(`/campgrounds/${campground._id}`);
         }
     });
   });

@@ -56,7 +56,7 @@ router.put("/:commentId", isAdmin, function(req, res){
           console.log(err);
            res.render("edit");
        } else {
-           res.redirect("/campgrounds/" + req.params.id);
+           res.redirect(`/campgrounds/${req.params.id}`);
        }
    }); 
 });
@@ -79,7 +79,7 @@ router.delete("/:commentId", isLoggedIn, checkUserComment, function(req, res){
             return res.redirect('/');
           }
           req.flash('error', 'Comment deleted!');
-          res.redirect("/campgrounds/" + req.params.id);
+          res.redirect(`/campgrounds/${req.params.id}`);
         });
     }
   });
